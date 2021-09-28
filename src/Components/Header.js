@@ -16,6 +16,7 @@ const Header = () => {
         {context.data ? (
           <Link className={styles.login} to="/conta">
             {context.data.nome}
+            <button onClick={context.userLogout}>Sair</button>
           </Link>
         ) : (
           <Link className={styles.login} to="/login">

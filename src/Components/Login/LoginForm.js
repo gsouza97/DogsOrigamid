@@ -41,7 +41,13 @@ const LoginForm = () => {
           error={password.error}
           onBlur={password.onBlur}
         />
-        <Button>Entrar</Button>
+        {context.loading ? (
+          <Button disabled>Carregando</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+
+        {context.error && <p>{context.error}</p>}
       </form>
       <Link to="/login/criar">Cadastro</Link>
     </section>
