@@ -14,7 +14,7 @@ const Login = () => {
     <Navigate to="/conta" />;
   }
   return (
-    <section className={`${styles.login} animeLeft`}>
+    <section className={styles.login}>
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />
