@@ -1,6 +1,6 @@
 import React from "react";
 import { TOKEN_POST, USER_GET, TOKEN_VALIDATE_POST } from "./api";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = React.createContext();
 
@@ -29,7 +29,6 @@ export const UserStorage = ({ children }) => {
     const json = await response.json();
     setData(json);
     setLogin(true);
-    console.log(json);
   }
 
   async function userLogin(username, password) {
@@ -68,13 +67,14 @@ export const UserStorage = ({ children }) => {
           if (!response.ok) {
             throw new Error("Token inválido.");
           }
-          console.log("Token válido");
           await getUser(token);
         } catch (err) {
-          await userLogout();
+          userLogout();
         } finally {
           setLoading(false);
         }
+      } else {
+        setLogin(false);
       }
     }
     autoLogin();

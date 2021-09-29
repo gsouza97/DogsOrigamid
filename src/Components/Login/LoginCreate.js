@@ -4,6 +4,8 @@ import Input from "../Forms/Input";
 import useForm from "../../Hooks/useForm";
 import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
+import useFetch from "../../Hooks/useFetch";
+import Error from "../Helper/Error";
 
 const LoginCreate = () => {
   const username = useForm();
@@ -11,21 +13,20 @@ const LoginCreate = () => {
   const password = useForm("password");
 
   const context = React.useContext(UserContext);
+  const fetchHook = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    try {
-      const api = USER_POST({
-        username: username.value,
-        email: email.value,
-        password: password.value,
-      });
-      const response = await fetch(api.url, api.options);
-      if (response.ok) {
-        await context.userLogin(username.value, password.value);
-      }
-      console.log(response);
-    } catch (err) {}
+
+    const api = USER_POST({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    });
+    const { response } = await fetchHook.request(api.url, api.options);
+    if (response.ok) {
+      await context.userLogin(username.value, password.value);
+    }
   }
 
   return (
@@ -59,7 +60,12 @@ const LoginCreate = () => {
           error={password.error}
           onBlur={password.onBlur}
         />
-        <Button>Cadastrar</Button>
+        {fetchHook.loading === true ? (
+          <Button disabled>Cadastrando...</Button>
+        ) : (
+          <Button>Cadastrar</Button>
+        )}
+        <Error error={fetchHook.error} />
       </form>
     </section>
   );
