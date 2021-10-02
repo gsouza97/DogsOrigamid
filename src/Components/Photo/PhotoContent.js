@@ -6,12 +6,8 @@ import styles from "./PhotoContent.module.css";
 const PhotoContent = ({ data }) => {
   return (
     <div className={styles.photo}>
-      <div>
-        <img
-          className={styles.img}
-          src={data.photo.src}
-          alt={data.photo.title}
-        />
+      <div className={styles.img}>
+        <img src={data.photo.src} alt={data.photo.title} />
       </div>
       <div className={styles.details}>
         <div>
@@ -30,7 +26,7 @@ const PhotoContent = ({ data }) => {
           </ul>
         </div>
       </div>
-      <PhotoComments id={data.photo.id} comments={data.photo.comments} />
+      <PhotoComments id={data.photo.id} comments={data.comments} />
     </div>
   );
 };
