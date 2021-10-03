@@ -8,7 +8,6 @@ import PhotoDelete from "./PhotoDelete";
 
 const PhotoContent = ({ data }) => {
   const context = React.useContext(UserContext);
-  console.log(data);
 
   return (
     <div className={styles.photo}>
