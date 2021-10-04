@@ -6,7 +6,7 @@ import PhotoComments from "./PhotoComments";
 import styles from "./PhotoContent.module.css";
 import PhotoDelete from "./PhotoDelete";
 
-const PhotoContent = ({ data }) => {
+const PhotoContent = ({ data, showPostComments }) => {
   const context = React.useContext(UserContext);
 
   return (
@@ -35,7 +35,11 @@ const PhotoContent = ({ data }) => {
           </ul>
         </div>
       </div>
-      <PhotoComments id={data.photo.id} comments={data.comments} />
+      <PhotoComments
+        showPostComments={showPostComments}
+        id={data.photo.id}
+        comments={data.comments}
+      />
     </div>
   );
 };

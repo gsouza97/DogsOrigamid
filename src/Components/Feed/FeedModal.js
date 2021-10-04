@@ -24,7 +24,9 @@ const FeedModal = ({ photo, setModalPhoto }) => {
     <div className={styles.modal} onClick={handleOutsideClick}>
       {fetchHook.error && <Error error={fetchHook.error} />}
       {fetchHook.loading && <Loading />}
-      {fetchHook.data && <PhotoContent data={fetchHook.data} />}
+      {fetchHook.data && (
+        <PhotoContent data={fetchHook.data} showPostComments={true} />
+      )}
     </div>
   );
 };

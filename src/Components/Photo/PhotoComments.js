@@ -3,7 +3,7 @@ import { UserContext } from "../../UserContext";
 import PhotoCommentsForm from "./PhotoCommentsForm";
 import styles from "./PhotoComments.module.css";
 
-const PhotoComments = ({ id, comments }) => {
+const PhotoComments = ({ id, comments, showPostComments }) => {
   const [comentarios, setComentarios] = React.useState(() => comments);
   const { login } = React.useContext(UserContext);
 
@@ -19,7 +19,7 @@ const PhotoComments = ({ id, comments }) => {
           </li>
         ))}
       </ul>
-      {login === true && (
+      {login === true && showPostComments === true && (
         <PhotoCommentsForm id={id} setComentarios={setComentarios} />
       )}
     </>
