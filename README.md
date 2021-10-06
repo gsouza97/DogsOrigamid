@@ -2,7 +2,7 @@
 
 Final project from React course from Origmid which consists in create a social network for dogs using React.
 
-# Technologies
+## Technologies
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/html)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -11,7 +11,7 @@ Final project from React course from Origmid which consists in create a social n
 - [React Router](https://reactrouter.com/)
 - [Victory](https://github.com/FormidableLabs/victory)
 
-# Media
+## Media
 
 <div style={display: 'in-line'}>
 <img src="https://user-images.githubusercontent.com/76229106/136133002-ce471853-bef8-4180-9b2e-19b4241e8391.gif" width=700px/>
